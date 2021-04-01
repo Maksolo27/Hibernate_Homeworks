@@ -68,6 +68,14 @@ public class Main {
 
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+            try {
+                connection.close();
+                statement.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
         }
 
 
