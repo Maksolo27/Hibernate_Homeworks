@@ -42,6 +42,21 @@ public class Main {
             + " " + client.getAge() + " " + client.getPhone());
         }
 
+        Client client = clientDAO.getById(4);
+        System.out.println("--------------");
+        System.out.println(client.getName());
+        System.out.println(client.getAge());
+        System.out.println(client.getPhone());
+
+        clientDAO.insert(client);
+        System.out.println("--------------");
+
+        client = clientDAO.getById(6);
+        System.out.println(client.getName());
+        System.out.println(client.getAge());
+        System.out.println(client.getPhone());
+
+
 
 
     }

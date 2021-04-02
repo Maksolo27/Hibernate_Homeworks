@@ -6,9 +6,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by admin on 29.10.2020.
- */
+
 public class ClientJDBCDao extends AbstractDao implements ClientDAO {
 
     @Override
@@ -47,25 +45,25 @@ public class ClientJDBCDao extends AbstractDao implements ClientDAO {
     @Override
     public int insert(Client client) {
         Connection connection = null;
-        PreparedStatement preparedStatement = null;
+        PreparedStatement statement = null;
 
         connection = getConnection();
 
         try {
-            preparedStatement = connection.prepareStatement("INSERT INTO clients(name, age, phone) VALUES (?, ?, ?)");
+            statement = connection.prepareStatement("Insert into clients(name, age, phone) VALUES(?,?,?)");
 
-            preparedStatement.setString(1, client.getName());
-            preparedStatement.setInt(2, client.getAge());
-            preparedStatement.setString(3, client.getPhone());
+            statement.setString(1, client.getName());
+            statement.setInt(2, client.getAge());
+            statement.setString(3, client.getPhone());
 
-            return preparedStatement.executeUpdate();
+            statement.execute();
+            return 1;
 
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        } finally {
-            closeConnaectionAndStatement(connection, preparedStatement);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            closeConnaectionAndStatement(connection, statement);
         }
-
         return 0;
     }
 
@@ -95,7 +93,35 @@ public class ClientJDBCDao extends AbstractDao implements ClientDAO {
 
     @Override
     public Client getById(int id) {
-        return null;
+        Client client = new Client();
+        Connection connection = null;
+        PreparedStatement statement = null;
+
+        connection = getConnection();
+
+        try {
+            statement = connection.prepareStatement("SELECT  c.name, c.age, c.phone from clients as c WHERE c.id = ?");
+
+            statement.setInt(1, id);
+
+            ResultSet resultSet =  statement.executeQuery();
+            if(resultSet.next()){
+                String name = resultSet.getString("c.name");
+                int age = resultSet.getInt("c.age");
+                String phone = resultSet.getString("c.phone");
+                client.setName(name);
+                client.setAge(age);
+                client.setPhone(phone);
+                return client;
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            closeConnaectionAndStatement(connection, statement);
+        }
+
+        return client;
     }
 
 }
