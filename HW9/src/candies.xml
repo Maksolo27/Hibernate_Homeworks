@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<factory>
+    <candy>
+        <calorific_value>120</calorific_value>
+        <name>Milka</name>
+        <type>Chocolate</type>
+    </candy>
+    <candy>
+        <calorific_value>60</calorific_value>
+        <name>Korovka</name>
+        <type>Caramel</type>
+    </candy>
+</factory>
