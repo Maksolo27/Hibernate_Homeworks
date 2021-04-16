@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+    <Tariff>
+        <name>Lite</name>
+        <Operator_name>Splunk</Operator_name>
+        <payroll>20</payroll>
+        <call_prices>
+            <inside_net>200</inside_net>
+            <outside_net>400</outside_net>
+            <stationary>150</stationary>
+        </call_prices>
+        <sms_price>20</sms_price>
+        <parameters>
+            <custom_number>false</custom_number>
+            <tarification>12</tarification>
+            <pay_for_tariff>200</pay_for_tariff>
+        </parameters>
+    </Tariff>
+
+
