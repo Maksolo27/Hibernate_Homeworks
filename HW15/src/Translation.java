@@ -1,4 +1,5 @@
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -22,13 +23,16 @@ public class Translation {
     }
 
     public static Translation translate(String inpWord){
-        Map<String, String> dictionary = new HashMap<>();
-        dictionary.put("есть", "to eat");
-        dictionary.put("животное", "animal");
-        dictionary.put("кот", "cat");
-        String outWord = dictionary.get(inpWord);
-        System.out.println(outWord);
-        return new Translation(inpWord, outWord);
+        List<Translation> dictionary = new ArrayList<>();
+        dictionary.add(new Translation("ja","yes"));
+        dictionary.add(new Translation("nein", "no"));
+        dictionary.add(new Translation("haus", "home"));
+        for (Translation translation: dictionary) {
+            if(translation.getiWord().equals(inpWord)){
+                return translation;
+            }
+        }
+        return new Translation(inpWord, "Такого слова нету");
     }
 
     public String getiWord() {

@@ -18,7 +18,7 @@ public class TranslateServlet extends HttpServlet{
         PrintWriter printWriter = resp.getWriter();
         Translation translation = new Translation();
         try {
-            translation = translation.translate("есть");
+            translation = translation.translate(req.getParameter("word"));
         }catch (Exception e){
             System.out.println("Такого слова нету в базе");
             e.printStackTrace();
@@ -29,6 +29,8 @@ public class TranslateServlet extends HttpServlet{
         printWriter.print(jsonString);
 
     }
+
+
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
