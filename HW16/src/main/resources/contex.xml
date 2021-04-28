@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <bean id = "toyota" class="impl.Toyota">
+        <constructor-arg ref="dotz"/>
+        <constructor-arg ref="cyclone"/>
+    </bean>
+
+    <bean id="dotz" class="impl.Dotz"/>
+    <bean id="aez" class="impl.Aez"/>
+    <bean id="bose" class="impl.Bose"/>
+    <bean id="cyclone" class="impl.Cyclone"/>
+
+
+
+</beans>
